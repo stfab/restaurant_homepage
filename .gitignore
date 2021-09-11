@@ -1,0 +1,11 @@
+Python/Django/mysite/media/
+Python/Django/mysite/restaurant_homepage/migrations/__pycache__/
+Python/Django/mysite/restaurant_homepage/__pycache__/
+Python/Django/mysite/polls/
+Python/Django/mysite/pizza/migrations/__pycache__/
+Python/Django/mysite/pizza/__pycache__/
+Python/Django/mysite/forum/__pycache__/
+Python/Django/mysite/forum/migrations/__pycache__/
+Python/Django/mysite/__pycache__/
+Python/Django/mysite/mysite/
+Python/CherryPy/cherrypy-rest-shop/src/cherrypy-rest-shop.db

@@ -1,0 +1,68 @@
+<div id="menu-section">
+	<blockquote class="blockquote text-center">
+	  <h1 class="mb-0">MENU</h1>
+	  <footer class="blockquote-footer">OUR DELICACY FOR YOU</footer>
+	</blockquote>
+	<div class="container">
+  		<div class="row justify-content-center">
+			<div class="col-10">
+			  <ul class="nav nav-tabs" id="myTab" role="tablist">
+			  {% if menu_list %}
+				  {% for menu in menu_list %}
+				   	{% if forloop.first %}	  
+				   	   <li class="nav-item">
+					     <a class="nav-link active" id="{{menu|cut:" "}}-tab" data-toggle="tab" href="#{{menu|cut:" "}}" role="tab" aria-controls="{{menu|cut:" "}}" aria-selected="true">{{menu}}</a>
+					   </li>
+					{% else %}  
+					  <li class="nav-item">
+					    <a class="nav-link" id="{{menu|cut:" "}}-tab" data-toggle="tab" href="#{{menu|cut:" "}}" role="tab" aria-controls="{{menu|cut:" "}}" aria-selected="false">{{menu}}</a>
+					  </li>
+					{% endif %}
+				  {% endfor %}
+			  {% else %}	    
+			   <li class="nav-item">
+			     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+			   </li>
+			  {% endif %}
+			  </ul>
+				<div class="tab-content" id="myTabContent">
+				{% if menu_list %}
+				  {% for key, menu in menu_list.items %}
+				   	{% if forloop.first %}	  
+			    		<div class="tab-pane fade show active" id="{{key|cut:" "}}" role="tabpanel" aria-labelledby="{{key|cut:" "}}-tab">
+						  <ul class="list-group">
+				   			{% for dish in menu %}	  
+						      <li class="list-group-item">
+								<p class="float-right"><em>{{dish.price}} &euro;</em></p>
+								<p class="text-left"><strong>{{dish.name}}</strong></p>
+								<p class="small text-muted">{{dish.description}}</p>
+							  </li>
+				  			{% endfor %}
+				          </ul>
+						</div>
+					{% else %} 
+				  		<div class="tab-pane fade" id="{{key|cut:" "}}" role="tabpanel" aria-labelledby="{{key|cut:" "}}-tab">
+						  <ul class="list-group">
+				   			{% for dish in menu %}		  
+						      <li class="list-group-item">
+								<p class="float-right"><em>{{dish.price}} &euro;</em></p>
+								<p class="text-left"><strong>{{dish.name}}</strong></p>
+								<p class="small text-muted">{{dish.description}}</p>
+							  </li>
+				  			{% endfor %}
+				          </ul>
+						</div>
+					{% endif %}
+				  {% endfor %}
+				{% else %}
+				  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Add a menu and dishes. Up to 10 dishes will be shown here.</div>
+				{% endif %}
+				</div>
+			   <br>
+			</div>
+			<a class="btn btn-primary col-4" href="{% url 'restaurant_homepage:menu'%}">Complete Menu</a>
+		</div>
+	</div>
+</div>
+
+<br><br>

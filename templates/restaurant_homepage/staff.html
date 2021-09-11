@@ -1,0 +1,30 @@
+{% include "restaurant_homepage/header.html" %}
+
+<br><br><br>
+
+
+<blockquote class="blockquote text-center">
+  <h1 class="mb-0">STAFF</h1>
+  <footer class="blockquote-footer">ALWAYS THERE FOR YOU</footer>
+</blockquote>
+
+<div class="container">
+	<div class="row">
+		{% if staff_list %}
+			{% for staff in staff_list %}
+				<div class="card col-lg-4">
+				  <img class="card-img-top" style="width:100%" src="/media/{{staff.image}}" alt="Card image cap">
+				  <div class="card-body">
+				    <h5 class="card-title">{{staff.name}}</h5>
+				    <p class="card-text">{{staff.info}}</p>
+				    <a href="#" class="btn btn-primary disabled">View More</a>
+				  </div>
+				</div>
+			{% endfor %}	
+		{% else %}
+			<p>Add staff members to show them here.</p>
+		{% endif %}
+	</div>
+</div>
+
+{% include "restaurant_homepage/footer.html" %}

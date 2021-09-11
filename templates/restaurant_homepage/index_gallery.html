@@ -1,0 +1,30 @@
+<div id="galery-section">
+	<blockquote class="blockquote text-center">
+	  <h1 class="mb-0">GALLERY</h1>
+	  <footer class="blockquote-footer">INSIGHTS IN OUR COOKING ART</footer>
+	</blockquote>
+	
+	{% if gallery_images %}
+	<div class="album py-5">
+        <div class="container">
+          <div class="row">
+			{% for image in gallery_images %}
+            <div class="col-md-3">
+              <div class="card mb-4 box-shadow">
+				<a href="/media/{{image.image}}">
+                  <img class="card-img-top" style="max-width: 100%; display: block;" src="/media/{{image.image}}">
+                </a>
+			  </div>
+            </div>
+			{% endfor %}
+		  </div>
+	   </div>
+	</div>
+	{% else %}
+	<div class="container">
+		<p>Add non-featured images to show them here.</p>
+	</div>
+	{% endif %}
+</div>
+
+<br><br>

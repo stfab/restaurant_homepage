@@ -1,0 +1,47 @@
+{% load widget_tweaks %}
+
+<form method="post" >
+	{% csrf_token %}
+	
+	<div class="media row justify-content-center">
+		<div class="container col-6">
+			{% for field in form.visible_fields %}
+			    <div class="form-group">
+			      {{ field.label_tag }}
+				  {% if field.name == "appointment" %}
+			      	{% render_field field class="form-control" id="form_datetime"%}
+				  {% elif field.name == "miscellaneous" %}
+					{% render_field field class="form-control expandable" rows="1"%}
+				  {% else %}	  
+				  	{% render_field field class="form-control" %}
+			      {% endif %}
+				
+			      {% if field.help_text %}
+			        <small class="form-text text-muted">{{ field.help_text }}</small>
+			      {% endif %}
+		          {% if field.errors %}
+		            <small class="form-text text-muted">{{ field.errors }}</small>
+		          {% endif %}
+			    </div>
+		  	{% endfor %}
+			<div>
+				<input class="btn btn-primary btn-lg" type="submit" value="Request">
+			</div>
+		</div>
+	</div>
+</form>
+
+{% load static %}
+<script src="{% static '/js/bootstrap-datetimepicker.min.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/bootstrap-datetimepicker.min.css' %}" type="text/css" />
+{% block javascript %}
+	<script type="text/javascript">
+    	$("#form_datetime").datetimepicker({
+			format: 'yyyy-mm-dd hh:ii',
+			daysOfWeekDisabled: [1],
+			minuteStep: 15,
+			todayHighlight: true		
+		});
+		$("#form_datetime")[0].setAttribute("readonly", "true");
+	</script> 
+{% endblock %}

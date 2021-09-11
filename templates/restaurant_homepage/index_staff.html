@@ -1,0 +1,27 @@
+<div id="staff-section">
+	<blockquote class="blockquote text-center">
+	  <h1 class="mb-0">STAFF</h1>
+	  <footer class="blockquote-footer">ALWAYS THERE FOR YOU</footer>
+	</blockquote>
+	
+	<div class="media row justify-content-center">
+	  <div class="media-body col-lg-4">
+		{% if staff_list %}
+		    <ul class="list-group">
+		    {% for staff in staff_list %}
+		      <li class="list-group-item"><strong>{{staff.name}}</strong> - {{staff.position}}</li> 
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		Add staff members to list them here.
+		{% endif%}
+		<br><a class="btn btn-primary" href="{% url 'restaurant_homepage:staff'%}">View More</a>
+	  </div>
+	  <div class="media-left col-lg-4 text-center">
+	    <img class="media-object" style="width:100%;" src="https://cdn.pixabay.com/photo/2015/04/20/13/30/kitchen-731351_1280.jpg" alt="...">	  
+	  </div>
+	</div>
+</div>
+
+<br><br>
+
